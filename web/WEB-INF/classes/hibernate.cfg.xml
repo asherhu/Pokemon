@@ -1,0 +1,19 @@
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+    <session-factory >
+        <!-- mysql数据库驱动 -->
+        <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
+        <!-- mysql数据库名称 -->
+        <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/pokemon</property>
+        <!-- 数据库的登陆用户名 -->
+        <property name="hibernate.connection.username">postgres</property>
+        <!-- 数据库的登陆密码 -->
+        <property name="hibernate.connection.password">huhanbo</property>
+
+
+        <mapping resource="com/a/test/User.hbm.xml"/>
+    </session-factory>
+</hibernate-configuration>

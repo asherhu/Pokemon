@@ -30,7 +30,7 @@ public class App {
             user.setUsername("abc");
             session.save(user);
             session.getTransaction().commit();
-
+            System.out.println("save success!");
 
         } catch (Exception e) {
             session.getTransaction().rollback();

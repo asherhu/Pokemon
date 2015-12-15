@@ -13,7 +13,7 @@
         <!-- 数据库的登陆密码 -->
         <property name="hibernate.connection.password">huhanbo</property>
 
-
+        <mapping resource="com/a/entity/User.hbm.xml"/>
         <mapping resource="com/a/test/User.hbm.xml"/>
     </session-factory>
 </hibernate-configuration>

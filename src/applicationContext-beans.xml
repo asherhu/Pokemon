@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+       <!-- cam.a.test -->
+       <bean id="greetingService" class="com.a.test.GreetingServiceImpl">
+              <property name="say">
+                     <value>Hello Tom!</value>
+              </property>
+       </bean>
+
+       <!--配数据源 -->
+
+    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
+             destroy-method="close">
+              <property name="driverClass" value="org.postgresql.Driver" />
+              <property name="jdbcUrl" value="jdbc:postgresql://localhost:5432/pokemon" />
+              <property name="user" value="postgres" />
+              <property name="password" value="huhanbo" />
+       </bean>
+
+    <bean id="sessionFactory"
+          class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+        <property name="dataSource" ref="dataSource" />
+
+        <!-- 如果使用配置文件 -->
+        <property name="mappingLocations">
+            <list>
+                <value>classpath:com/a/entity/User.hbm.xml</value>
+            </list>
+        </property>
+        
+        <!--<property name="annotatedClasses">-->
+            <!--<list>-->
+                <!--<value>com.a.entity.User</value>-->
+            <!--</list>-->
+        <!--</property>-->
+
+    </bean>
+
+    <!-- 配置事务管理器 -->
+    <bean id="transactionManager"
+          class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+        <property name="sessionFactory" ref="sessionFactory" />
+    </bean>
+
+
+    <bean id="userServiceAction" class="com.opensymphony.xwork2.ActionSupport" scope="prototype"></bean>
+
+    <bean id="userAction" class="com.a.action.UserAction" scope="prototype">
+        <property name="userService" ref="userService"></property>
+    </bean>
+
+
+    <bean id="userService" class="com.a.service.UserServiceImpl">
+        <property name="userDao" ref="userDao"></property>
+    </bean>
+
+    <bean id="userDao" class="com.a.dao.UserDaoImpl">
+        <property name="sessionFactory" ref="sessionFactory" />
+    </bean>
+</beans>

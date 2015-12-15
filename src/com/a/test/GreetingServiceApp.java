@@ -8,7 +8,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  */
 public class GreetingServiceApp {
     public static void main(String[] args) {
-        ApplicationContext ctx = new ClassPathXmlApplicationContext("hello.xml");
+        ApplicationContext ctx = new ClassPathXmlApplicationContext("applicationContext-beans.xml");
         GreetingService greetingService= (GreetingService) ctx.getBean("greetingService");
 
         greetingService.sayGreeting();

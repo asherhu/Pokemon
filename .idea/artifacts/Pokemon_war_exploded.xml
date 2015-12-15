@@ -12,6 +12,9 @@
           <element id="library" level="project" name="spring-oxm-4.0.1.RELEASE" />
           <element id="library" level="project" name="postgresql-9.4-1206-jdbc4" />
           <element id="library" level="project" name="struts2" />
+          <element id="library" level="project" name="c3p0-0.9.1.2" />
+          <element id="library" level="project" name="struts2-spring-plugin-2.3.24.1" />
+          <element id="library" level="project" name="log4j" />
         </element>
       </element>
     </root>

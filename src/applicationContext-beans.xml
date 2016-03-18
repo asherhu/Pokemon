@@ -30,7 +30,8 @@
                 <value>classpath:com/a/entity/User.hbm.xml</value>
             </list>
         </property>
-        
+
+        <!-- 如果启用了注解，下面可以代替上面的写法！ -->
         <!--<property name="annotatedClasses">-->
             <!--<list>-->
                 <!--<value>com.a.entity.User</value>-->
@@ -39,6 +40,9 @@
 
     </bean>
 
+    <!-- 启用spring注解支持 -->
+    <!--<context:annotation-config />-->
+
     <!-- 配置事务管理器 -->
     <bean id="transactionManager"
           class="org.springframework.orm.hibernate4.HibernateTransactionManager">
@@ -46,10 +50,14 @@
     </bean>
 
 
-    <bean id="userServiceAction" class="com.opensymphony.xwork2.ActionSupport" scope="prototype"></bean>
-
     <bean id="userAction" class="com.a.action.UserAction" scope="prototype">
-        <property name="userService" ref="userService"></property>
+         <!--<property name="user" ref="user"/>-->
+         <property name="userService" ref="userService"></property>
+    </bean>
+
+    <bean id="user" class="com.a.entity.User">
+        <!--<property name="username" value="test"></property>-->
+        <!--<property name="userpassword" value="test"/>-->
     </bean>
 
 

@@ -20,8 +20,15 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void addUser(User user) {
-        System.out.println("-----UserService-----"+user.getUsername());
-        userDao.addUser(user);
+    public boolean addUser(User user) {
+        System.out.println("-----UserService-----");
+        boolean isAddUser=userDao.addUser(user);
+        return isAddUser;
+    }
+
+    @Override
+    public String checkUser(User user) {
+        String chechUser=userDao.checkUser(user);
+        return chechUser;
     }
 }

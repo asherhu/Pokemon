@@ -11,21 +11,50 @@
     <!--<constant name="struts.enable.DynamicMethodInvocation" value="false" />-->
     <!--<constant name="struts.devMode" value="true" />-->
 
-    <package name="default" namespace="/" extends="struts-default">
-            <action name="login">
-                <result>login.jsp</result>
-            </action>
-    </package>
+    <!--<package name="default" namespace="/" extends="struts-default">-->
+            <!--<action name="login">-->
+                <!--<result>login.jsp</result>-->
+            <!--</action>-->
+    <!--</package>-->
 
     <!-- 与spring集成的写法，action等交予spring管理 -->
     <package name="userAction" namespace="/" extends="struts-default">
 
         <action name="register" class="userAction" method="userRegister">
-            <result name="success">/index.html</result>
-            <result name="fail">/login.html</result>
+            <result name="success">register.jsp</result>
+            <result name="fail">register.jsp</result>
+        </action>
+
+        <action name="login" class="userAction" method="userLogin">
+            <result name="success">main.jsp</result>
+            <result name="fail">index.jsp</result>
+        </action>
+
+        <action name="logout" class="userAction" method="userLogout">
+            <result name="success">index.jsp</result>
+
         </action>
 
 
+        <action name="jsTetris" class="userAction" method="goJsTetris">
+            <result name="success">jsTetris.jsp</result>
+            <result name="fail">index.jsp</result>
+        </action>
+
+        <action name="useredit" class="userAction" method="userEdit">
+            <result name="success">main.jsp</result>
+            <result name="fail">main.jsp</result>
+        </action>
+
+        <action name="main" class="userAction" method="backMain">
+            <result name="success">main.jsp</result>
+            <result name="fail">index.jsp</result>
+        </action>
+
+        <action name="modifyuser" class="userAction" method="userModify">
+            <result name="success">main.jsp</result>
+            <result name="fail">main.jsp</result>
+        </action>
     </package>
 
     <!--<include file="example.xml"/>-->
